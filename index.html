@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/icon.png">
+    <title>Text To Speach</title>
+    <script src = "./main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <article>
+        <h1>Text to Speech Website</h1>
+
+        <div class="input-section">
+            <div class="top-bar">
+                <label>Choose voice</label><br><br>
+                <select id="voiceSelect">
+                </select><br><br>
+            </div>
+
+            <div class="voice-metrics-container">
+                <div class="volume">
+                    <span>Volume</span><br><br>
+                    <input type="range" id = "volume" min = "1" max = "10" value="5">
+
+                </div>
+
+                <div class="rate">
+                    <span>Rate of speech</span><br><br>
+                    <input type="range" id = "rate" min="-1" max="1" value="0">
+
+                </div>
+
+                <div class="pitch">
+                    <span>Pitch</span><br><br>
+                    <input type="range" id = "pitch" min = "-2" max = "2" value="0">
+                </div>
+            </div>
+
+            <div class="main-input">
+                <span>Enter something you want to hear:</span><br><br>
+                <textarea name="sentence" id="sentence" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+
+        <center>
+            <input type="submit" id="submit-btn">
+        </center>
+    </article>
+
+    <footer>
+        <p>Made with 💙 by <a href = "https://github.com/adityasharma3">Aditya Sharma</a></p>
+    </footer>
+</body>
+</html>
