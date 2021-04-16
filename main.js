@@ -76,7 +76,7 @@ function main() {
         var sentence_to_speak = document.getElementById('sentence').value;
         console.log(sentence_to_speak);
 
-        speech.voice = voice;
+        //speech.voice = voice;
         speech.volume = volume;
         speech.rate = rate;
         speech.pitch = pitch;
