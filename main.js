@@ -2,9 +2,6 @@
 var speech = new SpeechSynthesisUtterance();
 var synth = window.speechSynthesis;
 
-//english language is being selected.
-speech.lang = "en";
-
 console.log(speech);
 
 function populateVoiceList() {
@@ -35,7 +32,8 @@ if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !=
 
 
 function main() {
-    var voice = '';
+    // var voice = document.getElementById('voiceSelect').value;
+    var vc = document.getElementById('voiceSelect').value;
     var volume = 10;
     var rate = 1;
     var pitch = 1;
@@ -43,8 +41,8 @@ function main() {
     //updating the voice chosen by user
     document.getElementById('voiceSelect').addEventListener("change" , function(){
         var input = document.getElementById("voiceSelect").value;
-        voice = input;
-        console.log("voice = " + input);
+        vc = input;
+        // console.log("voice = " + input);
     });
 
     //updating the volume upto the user's requirements
@@ -70,21 +68,24 @@ function main() {
         console.log("pitch = " + input);
     });
 
-    //
+    //finally getting the api to pronounce the input given by user.
     document.getElementById('submit-btn').addEventListener("click" , function() {
         console.log(speech.lang , speech.volume , speech.rate , speech.pitch);
         var sentence_to_speak = document.getElementById('sentence').value;
         console.log(sentence_to_speak);
 
-        //speech.voice = voice;
-        speech.volume = volume;
-        speech.rate = rate;
-        speech.pitch = pitch;
-
-        console.log(speech.voice ,speech.lang , speech.volume , speech.rate , speech.pitch);
-
-
         var speak_this = new SpeechSynthesisUtterance(sentence_to_speak);
+
+        var voiceSelect = document.getElementById('voiceSelect');
+        var voice = window.speechSynthesis.getVoices();
+
+        if (voiceSelect.value) {
+		    speak_this.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == voiceSelect.value; })[0];
+	    }
+
+        speak_this.volume = volume;
+        speak_this.rate = rate;
+        speak_this.pitch = pitch;
         synth.speak(speak_this);
     });
 }
